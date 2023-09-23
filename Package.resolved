@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "CodeBureau",
+        "repositoryURL": "https://github.com/zachbazov/CodeBureau.git",
+        "state": {
+          "branch": null,
+          "revision": "d7353f652873cef682ccf2603290dcfe4916cdea",
+          "version": "1.0.2"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
