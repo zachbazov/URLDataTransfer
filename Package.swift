@@ -11,7 +11,7 @@ let package = Package(
             targets: ["URLDataTransfer"])
     ],
     dependencies: [
-        .package(url: "https://github.com/zachbazov/CodeBureau.git", from: "1.0.4")
+        .package(url: "https://github.com/zachbazov/CodeBureau.git", from: "1.0.5")
     ],
     targets: [
         .target(name: "URLDataTransfer", dependencies: [

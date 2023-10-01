@@ -21,6 +21,9 @@ public protocol Requestable {
     var bodyEncoding: BodyEndcoding { get }
     
     func urlRequest(with config: URLRequestConfigurable) throws -> URLRequest
+    
+    @available(iOS 13.0.0, *)
+    func urlRequest(with config: URLRequestConfigurable) async throws -> URLRequest
 }
 
 public extension Requestable {

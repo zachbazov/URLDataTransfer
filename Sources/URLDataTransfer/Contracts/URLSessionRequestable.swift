@@ -10,6 +10,9 @@ import Foundation
 public protocol URLSessionRequestable {
     func request(request: URLRequest,
                  completion: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionTaskCancellable
+    
+    @available(iOS 13.0.0, *)
+    func request(_ request: URLRequest) async throws -> (Data, URLResponse)?
 }
 
 extension URLSession: URLSessionRequestable {
@@ -20,5 +23,10 @@ extension URLSession: URLSessionRequestable {
         task.resume()
         
         return task
+    }
+    
+    @available(iOS 13.0.0, *)
+    public func request(_ request: URLRequest) async throws -> (Data, URLResponse)? {
+        return try? await URLSession.shared.data(for: request)
     }
 }

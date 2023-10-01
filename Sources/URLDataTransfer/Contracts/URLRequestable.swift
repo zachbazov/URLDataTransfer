@@ -9,14 +9,18 @@ import Foundation
 
 public protocol URLRequestable {
     
-    associatedtype RequestMongoErrorType: Decodable
     associatedtype RequestErrorType: Error
     
     func request(endpoint: Requestable,
-                 error: ((RequestMongoErrorType) -> Void)?,
                  completion: @escaping (Result<Data?, RequestErrorType>) -> Void) -> URLSessionTaskCancellable?
     
     func request(request: URLRequest,
-                 error: ((RequestMongoErrorType) -> Void)?,
                  completion: @escaping (Result<Data?, RequestErrorType>) -> Void) -> URLSessionTaskCancellable
+    
+    
+    @available(iOS 13.0.0, *)
+    func request(endpoint: Requestable) async throws -> (Data, URLResponse)?
+    
+    @available(iOS 13.0.0, *)
+    func request(request: URLRequest) async throws -> (Data, URLResponse)?
 }

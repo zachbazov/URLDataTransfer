@@ -9,10 +9,7 @@ import Foundation
 
 public protocol DataTransferRequestable {
     
-    associatedtype RequestMongoErrorType: Decodable
-    
     func request<T, E>(endpoint: E,
-                       error: ((RequestMongoErrorType) -> Void)?,
                        completion: @escaping (Result<T, DataTransferError>) -> Void) -> URLSessionTaskCancellable?
     where T: Decodable,
           E: ResponseRequestable
@@ -20,4 +17,8 @@ public protocol DataTransferRequestable {
     func request<E>(endpoint: E,
                     completion: @escaping (Result<Void, DataTransferError>) -> Void) -> URLSessionTaskCancellable?
     where E: ResponseRequestable
+    
+    
+    @available(iOS 13.0.0, *)
+    func request<T, E>(endpoint: E) async -> Result<T, DataTransferError>? where T: Decodable
 }
